@@ -1,0 +1,117 @@
+/* Configuración básica */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #ffdae9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.contenedor-principal {
+    text-align: center;
+    width: 100%;
+}
+
+.tarjeta {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    max-width: 400px; /* Tamaño más controlado para que parezca tarjeta */
+    margin: 0 auto;
+    position: relative;
+}
+
+h1, h2 {
+    color: #d63384;
+}
+
+img {
+    width: 200px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+/* Botones corregidos */
+.botones {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px; /* Espacio real entre botones al inicio */
+    margin-top: 30px;
+    min-height: 150px; /* Espacio para que el Sí crezca sin mover la tarjeta */
+}
+
+button {
+    background-color: #ff4d8d;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.3s;
+}
+
+#btn-si {
+    z-index: 100; /* Asegura que el Sí siempre esté visible */
+    position: relative; /* Para que crezca desde su centro */
+}
+
+#btn-no {
+    position: relative; /* EMPIEZA AQUÍ para que respete el espacio al lado del SÍ */
+    z-index: 999;
+    transition: all 0.2s ease;
+}
+
+/* Clases de control */
+.oculto {
+    display: none !important;
+}
+
+/* --- UNIVERSO FINAL --- */
+#universo {
+    background-color: #000;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.agujero-negro {
+    width: 120px;
+    height: 120px;
+    background: black;
+    border-radius: 50%;
+    box-shadow: 0 0 60px 20px #ff4d4d, 0 0 100px 40px #6a0dad;
+    animation: latido 2s infinite alternate;
+}
+
+.palabra {
+    position: absolute;
+    color: white;
+    font-size: 1.2rem;
+    white-space: nowrap;
+    pointer-events: none;
+    text-shadow: 0 0 10px rgba(255,255,255,0.8);
+}
+
+@keyframes latido {
+    from { transform: scale(1); }
+    to { transform: scale(1.1); }
+}
+
+@keyframes orbitar {
+    from { transform: rotate(0deg) translateX(var(--distancia)) rotate(0deg); }
+    to { transform: rotate(360deg) translateX(var(--distancia)) rotate(-360deg); }
+}
